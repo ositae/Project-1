@@ -3,3 +3,21 @@ h1,h2 {
     color: blue;
 }
 
+#game {
+    background-color: blue;
+    color:red;
+    height: 100%;
+    width: 100%;
+}
+
+/* Write CSS Here */
+body {
+	text-align: center;
+}
+
+.game-mode {
+	font-size: 40px;
+	font-weight: bold;
+	color: green;
+}
+
