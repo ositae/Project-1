@@ -88,7 +88,8 @@ const detectHit = () => {
 function gamePlay() {
         
     ctx.clearRect(0,0, game.width, game.height);
-        
+
+// use for loop to show the snake movement on the canvas
     for (let i = (snakeArray.length - 1); i > 0; i--){ 
       snakeArray[i].x = snakeArray[i - 1].x; 
       snakeArray[i].y = snakeArray[i - 1].y;    
@@ -100,20 +101,18 @@ function gamePlay() {
     apple.render();
     detectHit();
 
+    // update score of current game and show high score
     document.getElementById('score').textContent = "Score: " + score;
-
     document.getElementById('right-top').textContent = 'High Score: ' + highScore;
-
-    message = document.getElementById('gameMessage');
-   
     gameStatus = false;
-    
-
+    message = document.getElementById('gameMessage');
     lost = document.getElementById('youDie');
-
+    
+    // restart the game when it is over
     restartBtn.addEventListener('click', startGame);
   
-    for ( let i = 0; i < snakeArray.length; i++){
+    // use for loop to indicate when the snake hit itself and signal game over
+    for (let i = 0; i < snakeArray.length; i++){
         if (snakeArray[0].x === snakeArray[i].x &&
             snakeArray[0].y === snakeArray[i].y ) {
             console.log('You lost! Please play again');
@@ -125,13 +124,45 @@ function gamePlay() {
             
          }
     }
-        if (localStorage.getItem('highScore')) {
-            highScore = localStorage.getItem('highScore')
-        } else {
-            localStorage.setItem('highScore', 0)
-        }
-        if (score > highScore) {
-            localStorage.setItem('highScore', score)
-    }
+    //     if (localStorage.getItem('highScore')) {
+    //         highScore = localStorage.getItem('highScore')
+    //     } else {
+    //         localStorage.setItem('highScore', 0)
+    //     }
+    //     if (score > highScore) {
+    //         localStorage.setItem('highScore', score)
+    // }
     //gameOver();
+}
+
+let gameStatus = true;
+
+// create function to start playing game
+let startGame = () => {
+
+    info.style.display = 'none';
+    container.style.display = 'block';
+
+    //infoScreen = document.querySelector('.info');
+    message = document.getElementById('gameMessage');
+    lost = document.getElementById('youDie');
+    
+
+    //infoScreen.style.display = 'block';
+    
+    //console.log(infoScreen.style);
+
+    restartBtn.style.display = 'none';
+    message.style.display = 'none';
+    lost.style.display = 'none';
+
+
+    // use the crawler function for the snake to show snake growth 
+        snake = new Crawler(120, 120, 15, 15, 'blue');
+        // snakeArray =  [];
+        snakeArray.push(snake);   
+        score = 0; 
+        gameLoop = setInterval(function () {
+            gamePlay();           
+        }, 1000);
 }
