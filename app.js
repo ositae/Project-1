@@ -46,3 +46,40 @@ if (this.y < 0) {
     this.y = game.height
 }    
 } 
+
+//t create function for food (apple) for the snake
+function Food (x, y, width, height, color) {
+    this.x = x;
+    this.y = y;
+    this.total = 1;
+    this.width = width;
+    this.height = height;
+    this.color = color;
+    this.alive = true;
+    this.render = function() {
+        ctx.fillStyle = this.color;
+        ctx.fillRect(this.x, this.y, this.width, this.height);
+    }
+}
+
+// create function for the apple to respawn at random
+function foodSpot() {
+    random_x = Math.floor(Math.random() * (game.height - 5)); 
+    random_y = Math.floor(Math.random() * (game.width - 5));  
+}    
+
+// create function for when the snake hit itself
+const detectHit = () => {
+    if (snake.x + snake.width > apple.x &&
+        snake.x < apple.x + apple.width &&
+        snake.y + snake.height > apple.y &&
+        snake.y < apple.y + apple.height ) { 
+           score++;
+        apple.alive = false;
+        let snakeBody = new Crawler(80, 80, 10, 10, 'green');
+        snakeArray.push(snakeBody);
+
+        locateApple(apple);
+        apple = new Food(random_x, random_y, 5, 5, 'red');
+    }
+}  
