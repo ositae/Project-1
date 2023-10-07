@@ -1,9 +1,8 @@
-let movementDisplay;
+let movementDisplay; // 
 let ctx
 let game;
 let snake;
-let apple; //food
- //have an array for the snake body
+let apple; 
 let random_x;
 let random_y;
 let score = 0;
@@ -12,7 +11,7 @@ let snakeArray = [];
 let restartBtn = document.getElementById('restartBtn');
 let playBtn = document.getElementById('playBtn');
 
-// create crawler for snake, this is for snake character
+// create crawler class for snake, this is for snake character
 function Crawler(x, y, width, height, color) {
   this.x = x;
   this.y = y;
@@ -26,9 +25,12 @@ function Crawler(x, y, width, height, color) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
+  
+  // declare update as function for the initial
+  // speed of the snake
   this.update = function() {
-            this.x += this.speedX;//this is for speed
-            this.y += this.speedY;// this is for speed
+            this.x += this.speedX;
+            this.y += this.speedY;
         if (this.x > game.height) {
             this.x = 0;
         } 
@@ -50,10 +52,10 @@ const down_arrow = 40;
 const right_arrow = 39;
 const left_arrow = 37;
 
-// declare function newMove to make snake movement
-// use switch method instead of if statement
+// create function newMove to make snake movement
+// use switch method instead of if statement for directional movement
 // if speed at either direction !== 10 in that direction
-// the snake will move by 7px at called button
+// the snake will move by 7 at called button
 this.newMove = function(newDirection) {
     switch(newDirection) {
         case (up_arrow):
@@ -84,10 +86,9 @@ this.newMove = function(newDirection) {
             break;  
         }
     }
-  
-}
 
-//this is for my apple character
+// create food class for snake food
+// this is for my apple character
 function Food (x, y, width, height, color) {
     this.x = x;
     this.y = y;
@@ -101,11 +102,16 @@ function Food (x, y, width, height, color) {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }
-function locateApple() {
-    random_x = Math.floor(Math.random() * (game.height - 15)); //need to take the height number
-    random_y = Math.floor(Math.random() * (game.width - 15)); // need to take the width number   
+
+// create function appleSpot for where the apple will respawn
+// set apple size
+function appleSpot() {
+    random_x = Math.floor(Math.random() * (game.height - 25)); 
+    random_y = Math.floor(Math.random() * (game.width - 25));   
 }    
 
+// declare function detectHit as a variable for the snake to die when
+// it hits itself using snakeArray and snakeBody crawler class
 const detectHit = () => {
     if (snake.x + snake.width > apple.x &&
         snake.x < apple.x + apple.width &&
@@ -113,21 +119,28 @@ const detectHit = () => {
         snake.y < apple.y + apple.height ) { 
            score++;
         apple.alive = false;
-        let snakeBody = new Crawler(100, 100, 20, 20, '#4B0082');
+
+        // call crawler class as snakeBody and push array 
+        let snakeBody = new Crawler(100, 100, 30, 30, 'black');
         snakeArray.push(snakeBody);
 
-        locateApple(apple);
+        // call function for apple to respawn
+        //using Food class
+        appleSpot(apple);
         apple = new Food(random_x, random_y, 15, 15, 'red');
     }
 }  
 
+// create function gameInit using init funition to set
+// game play conditionals
 function gameInit() {
         
+    // set canvas 2d for game play
     ctx.clearRect(0,0, game.width, game.height);
 
-    for (let i = (snakeArray.length - 1); i > 0; i--){ // i is always going to start at 0
-      snakeArray[i].x = snakeArray[i - 1].x; //put its in different place in the array 
-      snakeArray[i].y = snakeArray[i - 1].y; // minus    
+    for (let i = (snakeArray.length - 1); i > 0; i--){ 
+      snakeArray[i].x = snakeArray[i - 1].x; 
+      snakeArray[i].y = snakeArray[i - 1].y;    
       snakeArray[i].render();  
     } 
 
@@ -136,15 +149,13 @@ function gameInit() {
     apple.render();
     detectHit();
 
-    document.getElementById('score').innerText = "Score: " + score;
-
-    document.getElementById('top-right').innerText = 'High Score: ' + highScore;
+    document.getElementById('score').textContent = "Score: " + score;
+    document.getElementById('top-right').textContent = 'High Score: ' + highScore;
 
     message = document.getElementById('gameMessage');
    
     gameStatus = false;
     
-
     lost = document.getElementById('youDie');
 
     restartBtn.addEventListener('click', startGame);
@@ -152,7 +163,7 @@ function gameInit() {
     for ( let i = 5; i < snakeArray.length; i++){
         if (snakeArray[0].x === snakeArray[i].x &&
             snakeArray[0].y === snakeArray[i].y ) {
-            console.log('you lost!');
+            console.log('Game Over! You Lost!');
             clearInterval(gameLoop);
             
             message.style.display = 'block';
@@ -169,32 +180,23 @@ function gameInit() {
         if (score > highScore) {
             localStorage.setItem('highScore', score)
     }
-    //gameOver();
 }
 let gameStatus = true;
-
-
 
 let startGame = () => {
 
     info.style.display = 'none';
     container.style.display = 'block';
 
-    //infoScreen = document.querySelector('.info');
     message = document.getElementById('gameMessage');
     lost = document.getElementById('youDie');
-    
-
-    //infoScreen.style.display = 'block';
-    
-    //console.log(infoScreen.style);
 
     restartBtn.style.display = 'none';
     message.style.display = 'none';
     lost.style.display = 'none';
 
 
-        snake = new Crawler(150, 150, 20, 20, '#FF00FF');
+        snake = new Crawler(0, 0, 30, 30, 'black');
         snakeArray =  [];
         snakeArray.push(snake);   
         score = 0; 
