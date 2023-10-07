@@ -12,17 +12,16 @@ let snakeArray = [];
 let restartBtn = document.getElementById('restartBtn');
 let playBtn = document.getElementById('playBtn');
 
-// this is for my snake character
+// create crawler for snake, this is for snake character
 function Crawler(x, y, width, height, color) {
   this.x = x;
   this.y = y;
   this.speedX = 0;
-  this.speedY = 10;
+  this.speedY = 0;
   this.width = width;
   this.height = height;
   this.color = color;
   this.alive = true;
-//   this.snakeBody = [];
   this.render = function() {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
@@ -51,35 +50,35 @@ const down_arrow = 40;
 const right_arrow = 39;
 const left_arrow = 37;
 
+// declare function newMove to make snake movement
+// use switch method instead of if statement
+// if speed at either direction !== 10 in that direction
+// the snake will move by 7px at called button
 this.newMove = function(newDirection) {
     switch(newDirection) {
         case (up_arrow):
            if (this.speedY !== 10) {
-            console.log("moving up");
             this.speedX = 0;
-            this.speedY = -10;
+            this.speedY = -7;
            }
             break;
         case (down_arrow):
             if (this.speedY !== -10){
-                console.log("moving down");
                 this.speedX = 0; 
-                this.speedY = 10;
+                this.speedY = 7;
             }
             break;
 
         case (right_arrow):
             if (this.speedX !== -10){
-                console.log("moving right");
-                this.speedX = 10;
+                this.speedX = 7;
                 this.speedY = 0;
             }
             break;
 
         case(left_arrow):
         if (this.speedX !== 10){
-            console.log("moving left");
-            this.speedX = -10;
+            this.speedX = -7;
             this.speedY = 0;  
         }
             break;  
