@@ -1,23 +1,145 @@
-/* h1,h2 {
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    padding-top: 1em;
+    display: flex;
     text-align: center;
-    color: blue;
+    align-items: center;
+    background-image: url("https://i.ytimg.com/vi/AXxQUB5yDVQ/maxresdefault.jpg");
+    background-size: 150%;
+    min-width: 1000px;
 }
 
-#game {
-    background-color: blue;
-    color:red;
-    height: 100%;
-    width: 100%;
+h1, h2 {
+    font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
+    color: yellow;
 }
 
-/* Write CSS Here */
-/* body {
-	text-align: center;
+canvas {
+    background-color: rgb(82, 223, 82);
+    width: 500px;
+    height: 500px;
+    background-image: url("https://rapidpurple.com/v2/wp-content/uploads/2012/01/grid5-500x330.png");
+    background-position: center;
+    background-size: cover;
 }
 
-.game-mode {
-	font-size: 40px;
-	font-weight: bold;
-	color: green;
-/* } */ /*/ */ 
+#container {
+    min-width: 50em;
+    /* background-image: url("https://i.ytimg.com/vi/AXxQUB5yDVQ/maxresdefault.jpg"); */
+    /* background-size: cover; */
+    margin: 0 auto;
+    padding: 1em;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: .25fr .5fr .25fr;
+    grid-template-columns: .25fr .5fr .25fr;
+    grid-template-areas: "top-left top-left top-right"
+                         "game game game"
+                         "btm-left btm-right btm-right";
+}
 
+#top-left, #top-right, #btm-left, #btm-right {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* background-color: rgb(5, 139, 5); */
+    font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
+    color: yellow;
+}
+
+main {
+    grid-area: game;
+    font-size: 25px;
+}
+
+#top-left {
+    grid-area: top-left;
+    font-size: 25px;
+    /* background-image: url("https://i.ytimg.com/vi/AXxQUB5yDVQ/maxresdefault.jpg"); */
+    /* background-size: cover; */
+}
+
+#top-right {
+    grid-area: top-right;
+    font-weight: bolder;
+    font-size: 25px;
+    /* background-image: url("https://i.ytimg.com/vi/AXxQUB5yDVQ/maxresdefault.jpg"); */
+
+}
+
+#btm-left {
+    grid-area: btm-left;
+    font-size: 25px;
+    /* background-image: url("https://i.ytimg.com/vi/AXxQUB5yDVQ/maxresdefault.jpg"); */
+
+}
+
+#btm-right {
+    grid-area: btm-right;
+    font-size: 25px;
+    /* background-image: url("https://i.ytimg.com/vi/AXxQUB5yDVQ/maxresdefault.jpg"); */
+   
+
+}
+.info {
+    position: absolute;
+    background-color: rgba(65, 63, 63, 0.815);
+    color: yellow;
+    width: 400px;
+    height: 300px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0 auto;
+    border-radius: 30px;
+    text-align: center;
+    display: none;
+
+}
+
+#playBtn {
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    margin: 15px -75px -15px 75px;
+    bottom: 10%;
+    right: 50%;
+
+    color: #5fc9b8;
+    background-color: #1b1333;
+    font-family: 'Press Start 2p', monospace;
+    display: none;
+}
+
+#youDie {
+    width: 800px;
+    height: 300px;
+    position: absolute;
+    margin: 150px -400px -150px 400px;
+    bottom: 50%;
+    right: 50%;
+    display: inline-block;
+    font-size: 60px;
+    color: black;
+    line-height: 30px;
+    display: none;
+    
+}
+
+#restartBtn {
+    width: 150px;
+    height: 30px;
+    position: absolute;
+    margin: 15px -75px -15px 75px;
+    bottom: 10%;
+    right: 50%;
+
+    color: #5fc9b8;
+    background-color: #1b1333;
+    font-family: 'Press Start 2p', monospace;
+    display: none;
+}
