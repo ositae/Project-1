@@ -3,14 +3,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css"></link>
-    <title>Project 1</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title>Snake game</title>
 </head>
-<div class="game-mode">Snake Game</div>
-<h1>Test your skill!</h1>
-<canvas id="game"></canvas>
 <body>
-    <script src="./app.js"></script>
-    <!-- <script src="./app.test.js"></script> -->
+    <div id="container" style="display:none">
+        <aside id="left-top"><h2>The Snake Game</h2></aside>
+        <aside id="right-top"><h2 id="movement"></h2></aside>
+        <main>
+            <canvas id="game"></canvas>
+        </main>
+        <aside id="left-btm"><h2 id="score"></h2></aside>
+        <aside id="right-btm"><h2 id="status"></h2></aside>
+    </div>
+    <div class="info" id="info" style="display:block">
+        <h3>Test Your Skill!</h3>
+        <p>How to play:
+            <br>You move your snake with the arrow keys or "W-A-S-D" keys.
+            <br>Eat the apple to grow. Don't hit yourself or game over!
+            <br>Thanks for playing!
+        </p>
+        <button id="playBtn">START DA GAME!</button>
+    </div>
+    <div id='gameMessage'>
+        <button id='restartBtn'>Play</button>
+        <p id='youDie'>You died! Game Over!<br> </p>
+    </div>
+
+    <script type="text/javascript" src="./app.js"></script>
 </body>
 </html>
