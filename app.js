@@ -83,3 +83,55 @@ const detectHit = () => {
         apple = new Food(random_x, random_y, 5, 5, 'red');
     }
 }  
+
+// create function for the game play on canvas
+function gamePlay() {
+        
+    ctx.clearRect(0,0, game.width, game.height);
+        
+    for (let i = (snakeArray.length - 1); i > 0; i--){ 
+      snakeArray[i].x = snakeArray[i - 1].x; 
+      snakeArray[i].y = snakeArray[i - 1].y;    
+      snakeArray[i].render();  
+    } 
+
+    snake.update();
+    snake.render();
+    apple.render();
+    detectHit();
+
+    document.getElementById('score').textContent = "Score: " + score;
+
+    document.getElementById('right-top').textContent = 'High Score: ' + highScore;
+
+    message = document.getElementById('gameMessage');
+   
+    gameStatus = false;
+    
+
+    lost = document.getElementById('youDie');
+
+    restartBtn.addEventListener('click', startGame);
+  
+    for ( let i = 0; i < snakeArray.length; i++){
+        if (snakeArray[0].x === snakeArray[i].x &&
+            snakeArray[0].y === snakeArray[i].y ) {
+            console.log('You lost! Please play again');
+            clearInterval(gameLoop);
+            
+            message.style.display = 'block';
+            lost.style.display = 'block';
+            restartBtn.style.display = 'block';
+            
+         }
+    }
+        if (localStorage.getItem('highScore')) {
+            highScore = localStorage.getItem('highScore')
+        } else {
+            localStorage.setItem('highScore', 0)
+        }
+        if (score > highScore) {
+            localStorage.setItem('highScore', score)
+    }
+    //gameOver();
+}
