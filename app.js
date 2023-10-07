@@ -36,7 +36,7 @@ function Crawler(x, y, width, height, color) {
 if (this.x > game.height) {
     this.x = 0;
 } 
-if (this. y > game.width) {
+if (this.y > game.width) {
     this.y = 0;
 } 
 if (this.x < 0) {
@@ -46,8 +46,51 @@ if (this.y < 0) {
     this.y = game.height
 }    
 } 
+const up_arrow = 38;
+const down_arrow = 40;
+const right_arrow = 39;
+const left_arrow = 37;
 
-//t create function for food (apple) for the snake
+function movementHandler(e) {
+    console.log('movement:', e.key);
+    donkey.y - 10 >= 0 ? (donkey.y -= 10) : null;
+
+    switch(e.key === 'w' || e.key === 'ArrowUp') {
+        case (up_arrow):
+           if (this.speedY !== 10) {
+            console.log("moving up");
+            this.speedX = 0;
+            this.speedY = -10;
+           }
+            break;
+        case (down_arrow):
+            if (this.speedY !== -10){
+                console.log("moving down");
+                this.speedX = 0; 
+                this.speedY = 10;
+            }
+            break;
+
+        case (right_arrow):
+            if (this.speedX !== -10){
+                console.log("moving right");
+                this.speedX = 10;
+                this.speedY = 0;
+            }
+            break;
+
+        case(left_arrow):
+        if (this.speedX !== 10){
+            console.log("moving left");
+            this.speedX = -10;
+            this.speedY = 0;  
+        }
+            break;  
+        }
+    }
+}
+
+// create function for food (apple) for the snake
 function Food (x, y, width, height, color) {
     this.x = x;
     this.y = y;
@@ -61,6 +104,20 @@ function Food (x, y, width, height, color) {
         ctx.fillRect(this.x, this.y, this.width, this.height);
     }
 }
+
+// function movementHandler(e) {
+//     console.log('movement:', e.key);
+//     // make a conditional for each direction
+//     if (e.key === 'w' || e.key === 'ArrowUp') {
+//         snake.y - 10 >= 0 ? (snake.y -= 10) : null;
+//     } else if (e.key === 's' || e.key === 'ArrowDown') {
+//         snake.y + 10 <= game.height - donkey.height ? (snake.y += 10) : null;
+//     } else if (e.key === 'a' || e.key === 'ArrowLeft') {
+//         snake.x - 10 >= 10 ? (snake.x -= 10) : null;
+//     } else if (e.key === 'd' || e.key === 'ArrowRight') {
+//         snake.x + 10 <= game.width - donkey.width ? snake.x += 10 : null;
+//     }
+// }
 
 // create function for the apple to respawn at random
 function foodSpot() {
@@ -79,7 +136,7 @@ const detectHit = () => {
         let snakeBody = new Crawler(80, 80, 10, 10, 'green');
         snakeArray.push(snakeBody);
 
-        locateApple(apple);
+        appleSpot(apple);
         apple = new Food(random_x, random_y, 5, 5, 'red');
     }
 }  
@@ -166,3 +223,37 @@ let startGame = () => {
             gamePlay();           
         }, 1000);
 }
+document.addEventListener('DOMContentLoaded', () => {
+    console.log('Dom loaded')
+    // DOM REFS
+  
+    movementDisplay = document.getElementById('movement');
+    game = document.getElementById('game');
+    console.log(game);
+   
+    // CANVAS CONFIG
+  
+    game.setAttribute('height', '600px');
+    game.setAttribute('width', '600px');
+    ctx = game.getContext('2d');
+  
+      playBtn.addEventListener('click', startGame);
+      playBtn.style.display = 'block';
+  
+    // CHARACTER REFS
+    apple = new Food(300, 100, 15, 15, 'red');
+    snake = new Crawler(150, 150, 20, 20, '#FF00FF');
+    
+    
+  //   snakeBody = new Crawler(100, 100, 20, 20, 'blue');
+  //   snakeBody2 = new Crawler(80, 80, 20, 20, 'red');
+  
+      snakeArray.push(snake);
+  
+    document.addEventListener('keydown', ((e) => {
+        let newDirection = e.keyCode;
+        snake.movementHandler(newDirection);
+       // snakeBody.newMove(newDirection);
+      }))
+   
+  });
