@@ -29,3 +29,20 @@ function Crawler(x, y, width, height, color) {
     ctx.fillStyle = this.color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
+  // create function for snake speed and snake starting point
+  this.update = function() {
+    this.x += this.speedX; //this is for speed in x direction
+    this.y += this.speedY;// this is for speed in y direction
+if (this.x > game.height) {
+    this.x = 0;
+} 
+if (this. y > game.width) {
+    this.y = 0;
+} 
+if (this.x < 0) {
+    this.x = game.width
+} 
+if (this.y < 0) {
+    this.y = game.height
+}    
+} 
