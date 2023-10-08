@@ -86,7 +86,7 @@ this.newMove = function(newDirection) {
             break;  
         }
     }
-
+}
 // create food class for snake food
 // this is for my apple character
 function Food (x, y, width, height, color) {

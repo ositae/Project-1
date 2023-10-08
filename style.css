@@ -8,8 +8,8 @@ body {
     display: flex;
     text-align: center;
     align-items: center;
-    background-color: navy;
-    background-size: 150%;
+    background-image: url(https://image.winudf.com/v2/image/Y29tLnJldHJvZ2FtZXMuc25ha2Vfc2NyZWVuXzJfZXJrNHUzajg/screen-2.webp?fakeurl=1&type=.webp);
+    background-size: 100%;
     min-width: 1000px;
 }
 
@@ -19,10 +19,10 @@ h1, h2 {
 }
 
 canvas {
-    background-color: rgb(82, 223, 82);
+    background-color: rgb(233, 240, 233);
     width: 700px;
     height: 700px;
-    background-image:url(https://admin.itsnicethat.com/images/OIjxNdWZjDBxGO8G63riG0GcbPM=/200895/format-webp%7Cwidth-1440/Extra_nice__2021__snake_imagery___3_c4xEYPC.jpg);
+    /* background-image: url(https://admin.itsnicethat.com/images/OIjxNdWZjDBxGO8G63riG0GcbPM=/200895/format-webp%7Cwidth-1440/Extra_nice__2021__snake_imagery___3_c4xEYPC.jpg); */
     background-position: center;
     background-size: cover;
 }
