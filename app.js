@@ -10,7 +10,9 @@ let highScore = 0;
 let snakeArray = [];
 let restartBtn = document.getElementById('restartBtn');
 let playBtn = document.getElementById('playBtn');
-let canvasImg = document.getElementById('canvas-background');
+let snakeImg = document.getElementById('snake-img');
+let appleImg = document.getElementById('apple-img');
+// console.log(appleImg);
 
 // create crawler class for snake, this is for snake character
 function Crawler(x, y, width, height, color) {
@@ -25,7 +27,7 @@ function Crawler(x, y, width, height, color) {
   this.render = function() {
     // ctx.fillStyle = this.color;
     // ctx.fillRect(this.x, this.y, this.width, this.height);   
-    ctx.drawImage(canvasImg, this.x, this.y, this.width, this.height);
+    ctx.drawImage(snakeImg, this.x, this.y, this.width, this.height);
   }
   
   // declare update as function for the initial
@@ -100,8 +102,10 @@ function Food (x, y, width, height, color) {
     this.color = color;
     this.alive = true;
     this.render = function() {
-        ctx.fillStyle = this.color;
-        ctx.fillRect(this.x, this.y, this.width, this.height);
+        // ctx.fillStyle = this.color;
+        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        ctx.drawImage(appleImg, this.x, this.y, this.width, this.height);
+
     }
 }
 
@@ -129,7 +133,7 @@ const detectHit = () => {
         // call function for apple to respawn
         //using Food class
         appleSpot(apple);
-        apple = new Food(random_x, random_y, 15, 15, 'red');
+        apple = new Food(appleImg, random_x, random_y, 25, 25);
     }
 }  
 
@@ -227,12 +231,8 @@ document.addEventListener('DOMContentLoaded', () => {
     playBtn.style.display = 'block';
 
   // CHARACTER REFS
-  apple = new Food(300, 100, 15, 15, 'red');
-  snake = new Crawler(150, 150, 20, 20, '#FF00FF');
-  
-  
-//   snakeBody = new Crawler(100, 100, 20, 20, 'blue');
-//   snakeBody2 = new Crawler(80, 80, 20, 20, 'red');
+  apple = new Food(300, 100, 15, 15, appleImg);
+  snake = new Crawler(150, 150, 20, 20, snakeImg);
 
     snakeArray.push(snake);
 
@@ -241,7 +241,4 @@ document.addEventListener('DOMContentLoaded', () => {
       snake.newMove(newDirection);
      // snakeBody.newMove(newDirection);
     }))
-
-
- 
 });

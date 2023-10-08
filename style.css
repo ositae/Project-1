@@ -135,6 +135,6 @@ main {
     font-family: 'Press Start 2p', monospace;
     display: none;
 }
-#canvas-background{
+#snake-img, #apple-img{
     display: none;
 }
