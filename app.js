@@ -10,6 +10,7 @@ let highScore = 0;
 let snakeArray = [];
 let restartBtn = document.getElementById('restartBtn');
 let playBtn = document.getElementById('playBtn');
+let canvasImg = document.getElementById('canvas-background');
 
 // create crawler class for snake, this is for snake character
 function Crawler(x, y, width, height, color) {
@@ -22,8 +23,9 @@ function Crawler(x, y, width, height, color) {
   this.color = color;
   this.alive = true;
   this.render = function() {
-    ctx.fillStyle = this.color;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
+    // ctx.fillStyle = this.color;
+    // ctx.fillRect(this.x, this.y, this.width, this.height);   
+    ctx.drawImage(canvasImg, this.x, this.y, this.width, this.height);
   }
   
   // declare update as function for the initial
