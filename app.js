@@ -59,31 +59,31 @@ const left_arrow = 37;
 // create function newMove to make snake movement
 // use switch method instead of if statement for directional movement
 // if speed at either direction !== 10 in that direction
-// the snake will move by 7 at called button
+// the snake will move not move backwards 
 this.newMove = function(newDirection) {
     switch(newDirection) {
         case (up_arrow):
-           if (this.speedY !== 10) {
+           if (this.speedY !== 7) {
             this.speedX = 0;
             this.speedY = -7;
            }
             break;
         case (down_arrow):
-            if (this.speedY !== -10){
+            if (this.speedY !== -7){
                 this.speedX = 0; 
                 this.speedY = 7;
             }
             break;
 
         case (right_arrow):
-            if (this.speedX !== -10){
+            if (this.speedX !== -7){
                 this.speedX = 7;
                 this.speedY = 0;
             }
             break;
 
         case(left_arrow):
-        if (this.speedX !== 10){
+        if (this.speedX !== 7){
             this.speedX = -7;
             this.speedY = 0;  
         }
@@ -127,7 +127,7 @@ const detectHit = () => {
         apple.alive = false;
 
         // call crawler class as snakeBody and push array 
-        let snakeBody = new Crawler(100, 100, 30, 30, 'black');
+        let snakeBody = new Crawler(100, 100, 30, 30, 'pink');
         snakeArray.push(snakeBody);
 
         // call function for apple to respawn
@@ -194,6 +194,7 @@ let startGame = () => {
     info.style.display = 'none';
     container.style.display = 'block';
 
+    // display message when user playing game hits itself
     message = document.getElementById('gameMessage');
     lost = document.getElementById('youDie');
 
@@ -201,44 +202,43 @@ let startGame = () => {
     message.style.display = 'none';
     lost.style.display = 'none';
 
-
-        snake = new Crawler(0, 0, 30, 30, 'black');
+        // push snake into array during game play while
+        // eating apple
+        snake = new Crawler(0, 0, 30, 30, 'white');
         snakeArray =  [];
         snakeArray.push(snake);   
         score = 0; 
         gameLoop = setInterval(function () {
             gameInit();
                     
-        }, 25);
+        }, 20);
 
 }
 
+// add event listener to load the document on the page
 document.addEventListener('DOMContentLoaded', () => {
-  console.log('Dom loaded')
-  // DOM REFS
-
+  
+// use variable movementDisplay to put snake character
+//on the document
   movementDisplay = document.getElementById('movement');
   game = document.getElementById('game');
-  console.log(game);
- 
-  // CANVAS CONFIG
 
+  // adjust the size and positon of the canvas
   game.setAttribute('height', '600px');
   game.setAttribute('width', '600px');
   ctx = game.getContext('2d');
 
+    // add event listener for when user clicks the play button
     playBtn.addEventListener('click', startGame);
     playBtn.style.display = 'block';
 
-  // CHARACTER REFS
-  apple = new Food(300, 100, 15, 15, appleImg);
-  snake = new Crawler(150, 150, 20, 20, snakeImg);
-
+    // put snake character and food item onto the canvas
+    apple = new Food(300, 100, 15, 15, appleImg);
+    snake = new Crawler(150, 150, 20, 20);
     snakeArray.push(snake);
 
   document.addEventListener('keydown', ((e) => {
       let newDirection = e.keyCode;
       snake.newMove(newDirection);
-     // snakeBody.newMove(newDirection);
     }))
 });

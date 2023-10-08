@@ -8,17 +8,15 @@ let apple;
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    console.log('Dom loaded')
-    // DOM REFS
     movementDisplay = document.getElementById('movement');
     game = document.getElementById('game');
-    // CANVAS CONFIG
-    game.setAttribute('height', 400);
-    game.setAttribute('width', 400);
+    game.setAttribute('height', 600);
+    game.setAttribute('width', 600);
     ctx = game.getContext('2d');
-    // CHARACTER REFS
     apple = new Crawler(300, 100, 15, 15, 'red');
     snake = new Crawler(150, 150, 20, 20, 'yellow');
+
+    // add event listener for when arrow key moves
     document.addEventListener('keydown', movementHandler);
     let runGame = setInterval(gameLoop, 60);
   })
