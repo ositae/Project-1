@@ -10,7 +10,7 @@ body {
     align-items: center;
     background-image: url(https://image.winudf.com/v2/image/Y29tLnJldHJvZ2FtZXMuc25ha2Vfc2NyZWVuXzJfZXJrNHUzajg/screen-2.webp?fakeurl=1&type=.webp);
     background-size: 100%;
-    min-width: 1000px;
+    min-width: 500px;
 }
 
 h1, h2 {
@@ -20,8 +20,8 @@ h1, h2 {
 
 canvas {
     background-color: rgb(233, 240, 233);
-    width: 700px;
-    height: 700px;
+    width: 850px;
+    height: 550px;
     /* background-image: url(https://admin.itsnicethat.com/images/OIjxNdWZjDBxGO8G63riG0GcbPM=/200895/format-webp%7Cwidth-1440/Extra_nice__2021__snake_imagery___3_c4xEYPC.jpg); */
     background-position: center;
     background-size: cover;
@@ -133,5 +133,8 @@ main {
     color: #5fc9b8;
     background-color: #1b1333;
     font-family: 'Press Start 2p', monospace;
+    display: none;
+}
+#canvas-background{
     display: none;
 }
