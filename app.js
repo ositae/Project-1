@@ -103,7 +103,7 @@ function Food (x, y, width, height, color) {
     this.alive = true;
     this.render = function() {
         // ctx.fillStyle = this.color;
-        // ctx.fillRect(this.x, this.y, this.width, this.height);
+        // ctx.fillRect(appleImg, this.x, this.y, this.width, this.height);
         ctx.drawImage(appleImg, this.x, this.y, this.width, this.height);
 
     }
@@ -133,7 +133,7 @@ const detectHit = () => {
         // call function for apple to respawn
         //using Food class
         appleSpot(apple);
-        apple = new Food(appleImg, random_x, random_y, 25, 25);
+        apple = new Food(random_x, random_y, 25, 25);
     }
 }  
 
