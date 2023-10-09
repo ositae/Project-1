@@ -135,6 +135,7 @@ main {
     font-family: 'Press Start 2p', monospace;
     display: none;
 }
-#snake-img, #apple-img{
+#snake-img, #apple-img, #minutes, #seconds{
     display: none;
 }
+

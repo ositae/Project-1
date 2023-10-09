@@ -178,6 +178,7 @@ function gameInit() {
             
          }
     }
+        // use if else statement to update the score with the highest score
         if (localStorage.getItem('highScore')) {
             highScore = localStorage.getItem('highScore')
         } else {
@@ -204,7 +205,7 @@ let startGame = () => {
 
         // push snake into array during game play while
         // eating apple
-        snake = new Crawler(0, 0, 30, 30, 'white');
+        snake = new Crawler(100, 100, 30, 30, 'white');
         snakeArray =  [];
         snakeArray.push(snake);   
         score = 0; 
@@ -243,22 +244,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }))
 });
 
-var minutesLabel = document.getElementById("minutes");
-var secondsLabel = document.getElementById("seconds");
-var totalSeconds = 0;
-setInterval(setTime, 1000);
+// end game button
+// void QuitGame(); {
+//     Application.Quit()
+// }
 
-function setTime() {
-  ++totalSeconds;
-  secondsLabel.innerHTML = pad(totalSeconds % 60);
-  minutesLabel.innerHTML = pad(parseInt(totalSeconds / 60));
-}
+// create timer for game
+// var secondsCount = document.getElementById("seconds");
+// var minutesCount = document.getElementById("minutes");
+// var totalSeconds = 0;
+// setInterval(setTime, 1000);
 
-function pad(val) {
-  var valString = val + "";
-  if (valString.length < 2) {
-    return "0" + valString;
-  } else {
-    return valString;
-  }
-}
+// function setTime() {
+//   ++totalSeconds;
+//   secondsCount.textContent = pad(totalSeconds % 60);
+//   minutesCount.textContent = pad(parseInt(totalSeconds / 60));
+//   secondsCount.textContent.display = 50, 'yellow';
+//   minutesCount.textContent.display = 50, 'yellow';
+// }
+
+// function pad(val) {
+//   var valString = val + "";
+//   if (valString.length < 2) {
+//     return "0" + valString;
+//   } else {
+//     return valString;
+//   }
+// }

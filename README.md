@@ -56,3 +56,4 @@ I plan on implementing a timer to the game. This will give it a different mode w
 ![Alt text](<Screen Shot 2023-10-08 at 11.37.54 AM.png>)
 ![Alt text](<Screen Shot 2023-10-08 at 11.40.31 AM.png>)
 ![Alt text](<Screen Shot 2023-10-08 at 11.41.48 AM.png>)
+Technologies used include HTML, CSS, javaScript, Photo Editor, text editor.
