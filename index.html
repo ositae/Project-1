@@ -1,31 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="style.css">
     <title>Snake game</title>
 </head>
-<body img src="https://m.media-amazon.com/images/M/MV5BMGI3ZTNmZjktMjg3MC00YjJhLWJhNDQtOTJjZTE5Zjk4ZTNjXkEyXkFqcGdeQXVyNzQ1NDIxMDQ@._V1_.jpg" width="400" height="200">
+
+<body img
+    src="https://m.media-amazon.com/images/M/MV5BMGI3ZTNmZjktMjg3MC00YjJhLWJhNDQtOTJjZTE5Zjk4ZTNjXkEyXkFqcGdeQXVyNzQ1NDIxMDQ@._V1_.jpg"
+    width="400" height="200">
     <div id="container" style="display:none">
-        <aside id="top-left"><h2>Classic Snake Game</h2></aside>
-        <aside id="top-right"><h2 id="movement"></h2></aside>
+        <aside id="top-left">
+            <h2>Classic Snake Game</h2>
+        </aside>
+        <aside id="top-right">
+            <h2 id="movement"></h2>
+        </aside>
         <main>
             <canvas id="game"></canvas>
-            <button id="endGame" type="submit">End!</button>
+            <button onclick="self.close()" id="endGame" type="submit">End!</button>
             <label id="minutes">00</label>:<label id="seconds">00</label>
         </main>
-        <aside id="btm-left"><h2 id="score"></h2></aside>
-        <aside id="btm-right"><h2 id="status"></h2></aside>
+        <aside id="btm-left">
+            <h2 id="score"></h2>
+        </aside>
+        <aside id="btm-right">
+            <h2 id="status"></h2>
+        </aside>
     </div>
     <div class="info" id="info" style="display:block">
         <h3>Test Your Skill!</h3>
         <p>How to play:
-            <br>You move your snake with your arrow keys or W-A-S-D keys.
+            <br>You move your snake with your arrow keys.
             <br>You grow as you eat your apple. Don't hit yourself.
-            <br>If you do, you die! 
+            <br>If you do, you die!
             <br>Test your skill! Beat your highest score!
-            <br>Thanks for playing! 
+            <br>Thanks for playing!
         </p>
         <button id="playBtn">START!</button>
 
@@ -33,10 +45,12 @@
     <div id='gameMessage'>
         <button id='restartBtn'>RESTART!</button>
         <p id='youDie'> <br>You Died! <br>
-                        <br>Game Over!<br></p>
+            <br>Game Over!<br>
+        </p>
     </div>
     <img src="./img/snakeimage.png" id="snake-img">
     <img src="./img/Apple.jpeg" id="apple-img">
     <script type="text/javascript" src="app.js"></script>
 </body>
+
 </html>

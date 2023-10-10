@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
     margin: 0;
     padding: 0;
 }
@@ -13,7 +14,8 @@ body {
     min-width: 500px;
 }
 
-h1, h2 {
+h1,
+h2 {
     font-family: 'Press Start 2P', 'Courier New', Courier, monospace;
     color: yellow;
 }
@@ -36,11 +38,14 @@ canvas {
     grid-template-rows: .25fr .5fr .25fr;
     grid-template-columns: .25fr .5fr .25fr;
     grid-template-areas: "top-left top-left top-right"
-                         "game game game"
-                         "btm-left btm-right btm-right";
+        "game game game"
+        "btm-left btm-right btm-right";
 }
 
-#top-left, #top-right, #btm-left, #btm-right {
+#top-left,
+#top-right,
+#btm-left,
+#btm-right {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -74,9 +79,10 @@ main {
 #btm-right {
     grid-area: btm-right;
     font-size: 25px;
-   
+
 
 }
+
 .info {
     position: absolute;
     background-color: rgba(65, 63, 63, 0.815);
@@ -126,7 +132,7 @@ main {
     color: black;
     line-height: 30px;
     display: none;
-    
+
 }
 
 #restartBtn {
@@ -141,11 +147,14 @@ main {
     font-family: 'Press Start 2p', monospace;
     display: none;
 }
-#snake-img, #apple-img{
+
+#snake-img,
+#apple-img {
     display: none;
 }
 
-#minutes, #seconds{
+#minutes,
+#seconds {
     font-weight: bold;
     color: yellow;
     text-align: center;
