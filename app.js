@@ -10,9 +10,9 @@ let highScore = 0;
 let snakeArray = [];
 let restartBtn = document.getElementById('restartBtn');
 let playBtn = document.getElementById('playBtn');
+let endGame = document.getElementById('endGame');
 let snakeImg = document.getElementById('snake-img');
 let appleImg = document.getElementById('apple-img');
-// console.log(appleImg);
 
 // create crawler class for snake, this is for snake character
 function Crawler(x, y, width, height, color) {
@@ -233,6 +233,14 @@ document.addEventListener('DOMContentLoaded', () => {
     playBtn.addEventListener('click', startGame);
     playBtn.style.display = 'block';
 
+          // end game button
+     // add event listener for when user clicks the end button
+     endGame.addEventListener('click', endGame);
+     endGame.style.display = 'block';
+     function quitGame(){
+     window.close();
+ }
+
     // put snake character and food item onto the canvas
     apple = new Food(300, 100, 15, 15, appleImg);
     snake = new Crawler(150, 150, 20, 20);
@@ -244,30 +252,25 @@ document.addEventListener('DOMContentLoaded', () => {
     }))
 });
 
-// end game button
-// void QuitGame(); {
-//     Application.Quit()
-// }
+var minutesLabel = document.getElementById("minutes");
+var secondsLabel = document.getElementById("seconds");
+var totalSeconds = 0;
+setInterval(setTime, 1000);
 
-// create timer for game
-// var secondsCount = document.getElementById("seconds");
-// var minutesCount = document.getElementById("minutes");
-// var totalSeconds = 0;
-// setInterval(setTime, 1000);
+function setTime() {
+  ++totalSeconds;
+  secondsLabel.textContent = pad(totalSeconds % 60);
+  minutesLabel.textContent = pad(parseInt(totalSeconds / 60));
+  secondsLabel.display = 'inline-block';
+  minutesLabel.display = 'inline-block';
 
-// function setTime() {
-//   ++totalSeconds;
-//   secondsCount.textContent = pad(totalSeconds % 60);
-//   minutesCount.textContent = pad(parseInt(totalSeconds / 60));
-//   secondsCount.textContent.display = 50, 'yellow';
-//   minutesCount.textContent.display = 50, 'yellow';
-// }
+}
 
-// function pad(val) {
-//   var valString = val + "";
-//   if (valString.length < 2) {
-//     return "0" + valString;
-//   } else {
-//     return valString;
-//   }
-// }
+function pad(val) {
+  var valString = val + "";
+  if (valString.length < 2) {
+    return "0" + valString;
+  } else {
+    return valString;
+  }
+}

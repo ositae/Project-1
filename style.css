@@ -107,6 +107,13 @@ main {
     display: none;
 }
 
+#endGame {
+    color: #5fc9b8;
+    background-color: #1b1333;
+    font-family: 'Press Start 2p', monospace;
+    display: block;
+}
+
 #youDie {
     width: 800px;
     height: 300px;
@@ -129,13 +136,18 @@ main {
     margin: 15px -75px -15px 75px;
     bottom: 10%;
     right: 50%;
-
     color: #5fc9b8;
     background-color: #1b1333;
     font-family: 'Press Start 2p', monospace;
     display: none;
 }
-#snake-img, #apple-img, #minutes, #seconds{
+#snake-img, #apple-img{
     display: none;
 }
 
+#minutes, #seconds{
+    font-weight: bold;
+    color: yellow;
+    text-align: center;
+    font-family: 'Press Start 2p', monospace;
+}
