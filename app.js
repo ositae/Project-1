@@ -1,4 +1,4 @@
-let movementDisplay; // 
+let movementDisplay; 
 let ctx;
 let game;
 let snake;
@@ -117,8 +117,8 @@ function appleSpot() {
     random_y = Math.floor(Math.random() * (game.width - 25));
 }
 
-// declare function detectHit as a variable for the snake to die when
-// it hits itself using snakeArray and snakeBody crawler class
+// declare function detectHit as a variable for the snake to eat when
+// it eats the apple upon contact and adds to snakeArray
 const detectHit = () => {
     if (snake.x + snake.width > apple.x &&
         snake.x < apple.x + apple.width &&
@@ -128,6 +128,7 @@ const detectHit = () => {
         apple.alive = false;
 
         // call crawler class as snakeBody and push array 
+        // to make the snake longer after eating apple
         let snakeBody = new Crawler(100, 100, 30, 30, 'pink');
         snakeArray.push(snakeBody);
 
@@ -156,17 +157,26 @@ function gameInit() {
     apple.render();
     detectHit();
 
+    // get score and high score with DOM manipulation
     document.getElementById('score').textContent = "Score: " + score;
     document.getElementById('top-right').textContent = 'High Score: ' + highScore;
 
+    //get message that game is over using DOM manipulation
     message = document.getElementById('gameMessage');
 
+    // give veriable gameStatus a boolean value false
+    // gameStaus false is when user has not died
     gameStatus = false;
 
+    // give variable lost using DOM manipulation
+    // message when gameStatus boolean value is true
     lost = document.getElementById('youDie');
 
+    // add event listener button click to start game
     restartBtn.addEventListener('click', startGame);
 
+    // for loop for when the snake head hit its body
+    // can give it any value
     for (let i = 5; i < snakeArray.length; i++) {
         if (snakeArray[0].x === snakeArray[i].x &&
             snakeArray[0].y === snakeArray[i].y) {
@@ -199,6 +209,7 @@ let startGame = () => {
     message = document.getElementById('gameMessage');
     lost = document.getElementById('youDie');
 
+    // styling restart button and game message
     restartBtn.style.display = 'none';
     message.style.display = 'none';
     lost.style.display = 'none';
@@ -238,17 +249,22 @@ document.addEventListener('DOMContentLoaded', () => {
     snake = new Crawler(150, 150, 20, 20);
     snakeArray.push(snake);
 
+    // use DOM manipulation to add event listener
+    // this is for when the arrow key is pushed
     document.addEventListener('keydown', ((e) => {
         let newDirection = e.keyCode;
         snake.newMove(newDirection);
     }))
 });
 
+// timer to start when game starts
 var minutesLabel = document.getElementById("minutes");
 var secondsLabel = document.getElementById("seconds");
 var totalSeconds = 0;
 setInterval(setTime, 1000);
 
+//  use setTime method and use create an object pad 
+// use parseInt to return desired integers
 function setTime() {
     ++totalSeconds;
     secondsLabel.textContent = pad(totalSeconds % 60);
@@ -258,11 +274,14 @@ function setTime() {
 
 }
 
-function pad(val) {
-    var valString = val + "";
-    if (valString.length < 2) {
-        return "0" + valString;
+// call pad and pass it parameter value
+// value is the value from the parseInt method
+// add 0 and the integer number as a string
+function pad(value) {
+    var valueString = value + "";
+    if (valueString.length < 2) {
+        return "0" + valueString;
     } else {
-        return valString;
+        return valueString;
     }
 }
