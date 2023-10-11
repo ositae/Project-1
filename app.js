@@ -10,7 +10,7 @@ let highScore = 0;
 let snakeArray = [];
 let restartBtn = document.getElementById('restartBtn');
 let playBtn = document.getElementById('playBtn');
-let endGame = document.getElementById('endGame');
+// let endGame = document.getElementById('endGame');
 let snakeImg = document.getElementById('snake-img');
 let appleImg = document.getElementById('apple-img');
 
